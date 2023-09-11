@@ -1,0 +1,111 @@
+doctype html
+html
+	head
+		title Awesome Virtual Mixer
+		script(src='/javascripts/build/vendor.js')
+		script(src='/javascripts/build/mixer.js')
+
+		script(src='/javascripts/src/addons/AudioAnalysis.js')
+		script(src='/javascripts/src/sources/VideoSource.js')
+
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='/stylesheets/compositions/demo_your_music.css')
+		link(rel='stylesheet', href='/stylesheets/remotes/surface1_remote.css')
+	body 
+		a.logo(href='/')
+		h1.headline 
+			img#header_image(src="/images/haveityourway.png")
+		canvas#glcanvas
+		
+		#toolbox.toolbox 
+			.item#item1
+				center 
+					h2 1
+				p First, select an mp3 from your computer
+				input.hidden(type="file", id="file_input")
+				
+				button#upload_button Upload
+				p 
+					| <strong>OR</strong> If you have no mp3 files available, 
+					| you can also select from these fine songs below:
+				
+				select#select_song
+					option(value="") -- select music
+					option(value="/audio/100_metronome.mp3") 100 BPM metronome
+					option(value="/audio/120_metronome.mp3") 120 BPM metronome
+					option(value="/audio/140_metronome.mp3") 140 BPM metronome
+					option(value="/audio/BLABLABLA_original.mp3") Armin van Buuren - Bla Bla Bla
+					option(value="/audio/fulke_absurd.mp3") Fluke - Absurd
+					option(value="/audio/rage_hard.mp3") Franky Goes To Hollywood - Rage Hard
+					option(value="/audio/Y2Materemo.mp3") Y2 - Materemo
+					option(value="/audio/fear_is_the_mind_killer_audio.mp3") Adam Freeland - Fear is the mind killer
+
+			.arrow 
+				.actual_arrow 
+					| →
+
+			.item#item2
+				center 
+					h2 2
+				p select a 'set' of visuals for <em>left</em> side of your mixer
+				select#source1_select
+					option(value="/sets/programs_awesome_streamable.json") Awesome Memology
+					option(value="/sets/dance_streamable.json") Dancing
+					option(value="/sets/space_streamable.json") Space
+					option(value="/sets/abstract_streamable.json") Abstract
+					option(value="/sets/thiking_machines_streamable.json") Machine Learning					
+					// option(value="/sets/vjacademy2010-2018-streamable.json") VJAcademy Reels
+					option(value="/sets/programs_runner_streamable.json") Clutter
+
+				p 
+					| select a visual set for the <em>right</em> side of the mixer
+				select#source2_select
+					option(value="/sets/programs_runner_streamable.json") Clutter
+					option(value="/sets/dance_streamable.json") Dancing				
+					option(value="/sets/space_streamable.json") Space
+					option(value="/sets/abstract_streamable.json") Abstract
+					option(value="/sets/thiking_machines_streamable.json") Machine Learning
+					option(value="/sets/programs_awesome_streamable.json") Awesome Memology
+					// option(value="/sets/vjacademy2010-2018-streamable.json") VJAcademy Reels
+				
+			.arrow 
+				.actual_arrow
+					| →
+
+			.item#item2
+				center 
+					h2 3
+				p Optionally, select a "mix preset", for automatic mixing (still under development)
+				select#mix_preset_select
+					option(value="") I'll mix myself, thank you				
+					option(value="500") Slideshow
+					option(value="100") Program easy going
+					option(value="200") exciting campfire
+					option(value="300") Average mxing
+					option(value="400") Average plus
+					option(value="500") Eurohouse
+					option(value="600") EDM
+					option(value="800") hardstyle
+
+				
+				br
+				br
+				hr
+				p Now put your speakers or headphones on and press GO!
+				button#go_button.green Go!
+
+		audio.hidden(id="sound", controls)
+
+		
+		.blink.hidden
+		.payoff.hidden
+			| <h3>demo_your_music</small></h3>
+			| Part of the <a href='https://virtualmixproject.com/''> Virtual Mixer Project </a><br>
+			| <small>If you don't hear any music, click somewhere on the screen</small>
+			script(src='/compositions/demo_your_music.js')
+		
+		.includes.hidden
+			include ../partials/sysinfo
+			include ../partials/keyboard_control
+
+		include ../partials/analytics

@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+
+  b Hekllakdjaslk
+  
+  script. 
+    // http://127.0.0.1:3000/controllers/MidiController_remote
+    // socket.emit('command', {"command":"beats", "payload":_beats});    
+    renderer = new GlRenderer()
+    bpm = new BPM(renderer)
+    bpm.audio.muted = true
+    midi1 = new MidiController(renderer, {useAutoBpm: false})

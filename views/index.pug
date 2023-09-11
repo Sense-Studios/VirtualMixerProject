@@ -1,0 +1,27 @@
+extends layout
+
+block content  
+  
+  // h1= title
+  // p Wikommen to #{title}
+  // a(href='http://www.xangadix.net') with a link
+  
+  canvas#glcanvas
+  .blink
+  
+  pre#info
+  
+  button(onclick="console.log('little clickityepi'); testSource1.video.play(); this.style.display = 'none';") Play   
+
+  script.
+    var giphy_id = '#{environment}'
+    var marduq_key = '#{environment}'
+
+  // YOUR CODE
+  script(src='/javascripts/main.js')  
+
+  // YOUR STYLE
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  
+  
+  //include editors/hud

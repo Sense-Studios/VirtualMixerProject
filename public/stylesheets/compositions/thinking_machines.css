@@ -1,0 +1,19 @@
+.test {
+  margin: 0;
+  padding: 0;
+}
+
+.payoff {
+  bottom: 24px;
+  left: 24px;
+  width: 30vw;
+  position: absolute;
+  color: white;
+  font-family: arial, sans-serif;
+}
+.payoff a {
+  color: white;
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=thinking_machines.css.map */

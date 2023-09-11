@@ -1,0 +1,7 @@
+*.log
+node_modules/
+/node_modules/
+ignore
+/ignore/
+/public/video/ignore/
+public/video/ignore

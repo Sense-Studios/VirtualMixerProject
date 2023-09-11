@@ -1,0 +1,89 @@
+body
+  padding: 50px
+  font: 14px "Verdana", Helvetica, Arial, sans-serif
+  color: black
+  margin: 0
+  padding: 0
+  overflow: hidden
+
+#info
+  position: absolute
+  top: 50px
+  left: 10px
+  color: rgba(220,220,220,0.82)
+  text-shadow: 0px 1px 2px rgba(0,0,0,0.42)
+
+.blink
+  background-color: red
+  opacity: 1
+  display: inline-block
+  left: 10px
+  top: 10px
+  position: absolute
+  width: 16px
+  height: 16px
+  float: left
+  border-radius: 6px
+  z-index: 9001
+
+//button
+  position: absolute
+  top: 10
+  z-index: 1000000
+  top: 10px
+  left: 20px
+  width: 200px
+  height: 200px
+
+.logo
+  position: fixed
+  bottom: 8px
+  right: 24px
+  background-image: url('/images/vmp_logo_t.png')
+  background-size: contain
+  background-repeat: no-repeat
+  width: 100px
+  height: 100px
+  z-index: 1000
+
+.play_button
+  position: fixed
+  top: calc( 50% - 50px )
+  right: calc( 50% - 50px )
+  background-color: transparent
+  background-image: url('https://cdn.onlinewebfonts.com/svg/download_68580.png')
+  background-size: contain
+  background-repeat: no-repeat
+  width: 100px
+  height: 100px
+  z-index: 1000
+  border: none
+  pointer-events: all
+  cursor: pointer
+  filter: invert(1)
+
+  &:active
+    outline: none
+    border: none
+
+  &:focus
+    outline: 0
+
+.mute_button
+  position: fixed
+  top: 12px
+  right: 24px
+  background-color: transparent
+  background-image: url('https://image.flaticon.com/icons/svg/53/53792.svg')
+  background-size: contain
+  background-repeat: no-repeat
+  width: 40px
+  height: 40px
+  z-index: 1000
+  border: none
+  pointer-events: none
+
+img.text-icon
+  margin: 2px 4px
+  height: 16px
+  vertical-align: middle

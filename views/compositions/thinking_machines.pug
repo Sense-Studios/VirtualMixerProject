@@ -1,0 +1,41 @@
+doctype html
+html
+head
+    title Thinking Machines, the AI robot mixer
+      
+    script(src='/javascripts/build/vendor.js')
+    script(src='/javascripts/build/mixer.js')
+
+    // override videosource, for testing
+    // script(src='/javascripts/src/sources/VideoSource.js')
+    // script(src='/javascripts/src/addons/AudioAnalysis.js')
+    script 
+      | var clicks = 0;
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/compositions/thinking_machines.css')
+    
+body(onclick="clicks++; if(clicks==2) document.getElementById('play_button').style.display = 'none'")
+    a.logo(href='/')
+    button.play_button#play_button
+    button.mute_button#mute_button(style="display:none")
+
+    canvas#glcanvas
+    .blink
+    
+    .payoff
+      //| <h3>Total Diffusion!</h3>
+      //| <p>Rise of the machines</p>
+      
+      | <strong><strong>Thinking machines</strong> for nineties brains</strong>
+      | <br><hr>
+      |
+      | Of course I needed to play with <strong>generative visual AIs</strong> too, 
+      | but then, I chased those pixels through the analog processors of an <verystrong>MX-50 Video mixer</verystrong>. 
+      | It glitched and I taped that too. The results I put in this mixer.
+
+
+    script(src='/javascripts/src/GlRenderer.js')
+    script(src='/compositions/thinking_machines.js')    
+    include ../partials/analytics
+    include ../partials/sysinfo
+    include ../partials/keyboard_control

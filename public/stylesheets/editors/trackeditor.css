@@ -1,0 +1,80 @@
+@font-face {
+  font-family: 'MINI7';
+  src: url("/fonts/MINI 7.ttf") format("truetype"); }
+
+body {
+  font-family: MINI7;
+  font-size: 10px;
+  background-color: #333;
+  color: #d5d4d4;
+  overflow-y: scroll; }
+
+.sheet_button {
+  background-color: #752;
+  width: 4%;
+  height: 4%;
+  position: fixed;
+  top: 10px;
+  left: 0.5%;
+  display: inline-block; }
+
+#button_sheet_2 {
+  top: calc( 4% + 20px); }
+
+.table {
+  width: 94%;
+  left: 5%;
+  position: absolute; }
+
+.tracktest {
+  background-color: red; }
+
+input, select {
+  font-family: MINI7;
+  font-size: 7px;
+  background-color: rgba(0, 0, 0, 0);
+  color: #d5d4d4;
+  border: none;
+  padding: 2px 1px;
+  display: inline-block;
+  color: #CCC; }
+  input option, select option {
+    color: #333; }
+
+input {
+  width: 14%; }
+
+select {
+  width: 40%; }
+
+tr.alternate {
+  background-color: #666;
+  color: #fff; }
+
+tr.active {
+  background-color: #45c; }
+
+tr td {
+  border-bottom: solid 1px #222;
+  border-right: solid 1px #222; }
+  tr td[class*="MIX"] {
+    background-color: purple;
+    color: black; }
+  tr td[class*="SRC"], tr td[class*="VID"] {
+    background-color: violet; }
+    tr td[class*="SRC"] select, tr td[class*="SRC"] input, tr td[class*="VID"] select, tr td[class*="VID"] input {
+      color: black; }
+  tr td[class*="FIL"] {
+    background-color: pink;
+    color: black; }
+    tr td[class*="FIL"] select, tr td[class*="FIL"] input {
+      color: black; }
+  tr td[class*="BPM"] {
+    background-color: darkred;
+    color: black; }
+
+@media only screen and (max-width: 768px) {
+  input, select {
+    width: 100% !important; } }
+
+/*# sourceMappingURL=trackeditor.css.map */

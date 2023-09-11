@@ -1,0 +1,75 @@
+@font-face {
+  font-family: mini7_bold;
+  src: url("https://virtualmixproject.com/fonts/MINI 7 Bold.ttf");
+}
+@font-face {
+  font-family: mini7_bold_condensed;
+  src: url("https://virtualmixproject.com/fonts/MINI 7 Condensed Bold.ttf");
+}
+@font-face {
+  font-family: mini7_condensed;
+  src: url("https://virtualmixproject.com/fonts/MINI 7 Condensed.ttf");
+}
+test {
+  margin: 0;
+  padding: 0;
+}
+
+.sysinfo {
+  position: absolute;
+  top: 12px;
+  right: 8px;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.72);
+  color: white;
+  font-family: mini7_condensed;
+  font-size: 12px;
+  line-height: 10px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 12px;
+  box-shadow: 3px 3px 12px rgba(42, 42, 42, 0.42);
+  font-size: 10px;
+}
+.sysinfo .close_button {
+  color: white;
+  float: right;
+  height: 0;
+  position: relative;
+  font-weight: bold;
+  font-size: 19px;
+  font-family: system-ui;
+  pointer-events: all;
+  cursor: pointer;
+}
+.sysinfo table {
+  width: 240px;
+  overflow: hidden;
+  table-layout: fixed;
+}
+.sysinfo td:first-child {
+  color: #a3a3a3;
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: solid 1px #444444;
+  overflow: hidden;
+}
+.sysinfo td:nth-child(2) {
+  width: 130px;
+  overflow: hidden;
+  font-family: mini7_bold;
+  text-wrap: nowrap;
+  overflow: hidden;
+}
+.sysinfo h3 {
+  margin-bottom: 4px;
+  font-family: mini7_bold;
+  color: #ff3355;
+}
+
+.hidden {
+  display: none;
+}
+
+/*# sourceMappingURL=sysinfo.css.map */

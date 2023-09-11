@@ -1,0 +1,25 @@
+{
+    "recurseDepth": 10,
+    "source": {
+        "includePattern": ".+\\.js(doc|x)?$|.+\\.md?$",
+        "excludePattern ": ""
+    },
+    "sourceType": "module",
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc","closure"]
+    },
+    "templates": {
+        "cleverLinks": true,
+        "monospaceLinks": true
+    },
+    "opts": {
+       "destination": "./docs/reference"       
+    },
+    "plugins": ["plugins/markdown", "article_plugin"],
+    "markdown": {
+      "excludeTags": [],
+      "tags": ["markdown"],
+      "hardwrap": true
+    }
+}

@@ -1,0 +1,83 @@
+link(rel='stylesheet', href='/stylesheets/partials/sysinfo.css')
+#sysinfo.sysinfo 
+  .close_button ×
+  h2 Mixer Info:
+  #test_container    
+  br 
+  canvas#VU_canvas(width="240", height="64")
+
+  // optional container for log info
+  //h3 Log
+  //#log
+  //  .logcontainer
+
+// templates for the different components to be rendered
+template#mixer
+  h3.display_uuid
+  table        
+    tr  
+      td Pod
+      td.display_pod 1
+    tr  
+      td Mixmode
+      td.display_mix_mode 1
+    tr  
+      td Blendmode
+      td.display_blend_mode 1 
+
+template#audioanalysis    
+  h3.display_uuid
+  table 
+    tr 
+      td BPM              
+      td.display_bpm 0
+    tr            
+      td interpolated BPM
+      td.display_bpm_delayed 0
+    tr
+      td BPM mod
+      td.display_bpm_mod 0
+    tr 
+      td confidence
+      td.display_bpm_conf 0
+    tr 
+      td BPM sec
+      td.display_bpm_sec 1
+    tr 
+      td BPM render
+      td.display_bpm_render 1
+    tr 
+      td float
+      td.display_bpm_float 1 
+
+    tr 
+      td beat
+      td.display_beats 1 
+
+template#videosource
+  h3.display_uuid
+  table        
+    tr  
+      td filename
+      td.display_filename 
+    tr  
+      td current time
+      td.display_time 
+    tr  
+      td duration
+      td.display_duration
+    tr  
+      td state
+      td.display_state
+    tr  
+      td speed
+      td.display_speed
+    tr  
+      td dimensions
+      td.display_dimensions
+
+template#monitor
+    h3.display_uuid
+
+
+script(src='/javascripts/partials/sysinfo.js')
