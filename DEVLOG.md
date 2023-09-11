@@ -1,3 +1,16 @@
+# 12-09-2023
+*by xangadix*
+
+So I've completely reset the repository as planned,
+Everything should be sync again now.
+
+**TODO**: Still on the list
+- build a boilerplate template like the sense-studios site
+- build a boilerplate template for a video left-right slide show site
+- add a video tutorial for the cdn and npm options
+- ~~update site and git setup~~
+- ~~add a video tutorial for the mx50~~
+
 # 28-08-2023
 *by xangadix*
 
@@ -6,6 +19,7 @@ We'll have a public repo under Sense Studios, and other developers
 can just fork from there. I'll fork the website from there too 
 to keep it all nice and clean. 
 
+```
 sense-studios
 dev-public-repo:main
  |
@@ -14,6 +28,7 @@ dev-public-repo:main
  |--- > otherfork public ...
  |--- > otherfork public ...
  '--- > otherfork private ...
+```
 
 Do we maybe want to add mapping tools?
 
