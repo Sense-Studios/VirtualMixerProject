@@ -4,11 +4,54 @@
 So I've completely reset the repository as planned,
 Everything should be sync again now.
 
+121GB bandwidth used in last 30 days
+16GB in storage used
+
 **TODO**: Still on the list
+- ~~fix the repository!!~~
+- ~~add 180BPM metronome ?~~
+- Check demos and namely the tracker
 - build a boilerplate template like the sense-studios site
 - build a boilerplate template for a video left-right slide show site
 - add a video tutorial for the cdn and npm options
-- ~~update site and git setup~~
+- connect mix preset in mix_preset_select.pug
+
+# 06-09-2023
+*by xangadix*
+
+108GB bandwidth used in last 30 days
+16GB in storage used
+
+**TODO**: Still on the list
+- fix the repository
+- ~~fix lueng~~
+- ~~remove vja from "your own way"~~
+- add 180BPM ?
+- ~~Check Analytics for div. pages~~
+- Check demos and namely the tracker
+- ~~update site~~ and git setup
+- build a boilerplate template like the sense-studios site
+- build a boilerplate template for a video left-right slide show site
+- add a video tutorial for the cdn and npm options
+- ~~add a video tutorial for the mx50~~
+- connect mix preset in mix_preset_select.pug
+
+# 31-08-2023
+*by xangadix*
+
+So we are actually running some live video tests
+
+- fix lueng
+- remove vja from "your own way"
+- add 180BPM ?
+- Check Analytics for div. pages
+- Check demos and namely the tracker
+
+**TODO**: Still on the list
+- ~~update site~~ and git setup
+- build a boilerplate template like the sense-studios site
+- build a boilerplate template for a video left-right slide show site
+- add a video tutorial for the cdn and npm options
 - ~~add a video tutorial for the mx50~~
 
 # 28-08-2023
