@@ -20,9 +20,14 @@ MultiVideoSource.constructor = MultiVideoSource;  // re-assign constructor
  *  In doing so it allows for very fast jumping through the video even when it is loading from a remote server.
  *  The main features are random jumping and a cue list, allowing for smart referincing in video files.
  *
+ * 
  * @implements Source
  * @constructor Source#MultiVideoSource
- * @example let myMultiVideoSource = new MultiVideoSource( renderer, { src: 'myfile.mp4', cues: [ 0, 10, 20, 30 ] } );
+ * @example 
+ * let myMultiVideoSource = new MultiVideoSource( renderer, { src: 'myfile.mp4', cues: [ 0, 10, 20, 30 ] } );
+ * let myMultiVideoSource = new MultiVideoSource( renderer, { src: 'myfile.mp4', cues: [ 0, 10, 20, 30 ] } );
+ * myMultiVideoSource.jump();
+ * 
  * @param {GlRenderer} renderer - GlRenderer object
  * @param {Object} options - JSON Object, with src (file path) and cues, cuepoints in seconds
  */
