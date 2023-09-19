@@ -25,7 +25,6 @@ MultiVideoSource.constructor = MultiVideoSource;  // re-assign constructor
  * @constructor Source#MultiVideoSource
  * @example 
  * let myMultiVideoSource = new MultiVideoSource( renderer, { src: 'myfile.mp4', cues: [ 0, 10, 20, 30 ] } );
- * let myMultiVideoSource = new MultiVideoSource( renderer, { src: 'myfile.mp4', cues: [ 0, 10, 20, 30 ] } );
  * myMultiVideoSource.jump();
  * 
  * @param {GlRenderer} renderer - GlRenderer object
