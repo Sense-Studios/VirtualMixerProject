@@ -44,6 +44,7 @@ var selectRandomMovie = function( _source, _filemanager = null, _config = [] ) {
 }
 
 var keyboardoconfig = []
+var program = 0;
 
 function loadKeys() { 
   console.log("key!")
@@ -113,7 +114,48 @@ function loadKeys() {
       //mixer2.mixMode(1)
       break;
 
-      case '~': // r (eset)
+      // program settings 1-9 and 0
+      case '0':
+        program = 0
+      break;
+
+      case '1':
+        program = 100
+      break;
+
+      case '2':
+        program = 200
+      break;
+    
+      case '3':
+        program = 300
+      break;
+      
+      case '4':
+        program = 400
+      break;
+      
+      case '5':
+        program = 500
+      break;
+      
+      case '6':
+        program = 600
+      break;
+      
+      case '7':
+        program = 700
+      break;
+      
+      case '8':
+        program = 800
+      break;
+
+      case '9':
+        program = 900
+      break;
+
+      case '~': // show logs
         document.getElementById('sysinfo').classList.toggle("hidden")
       break 
 
