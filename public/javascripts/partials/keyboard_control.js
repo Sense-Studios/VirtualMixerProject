@@ -66,52 +66,53 @@ function loadKeys() {
   })
 
   document.onkeydown = function(e) { 
-    console.log(" >>>> keydown", e)
+    console.log(" >>>> keydown", e.key)
+    
     // poor mans version
     switch (e.key) {
       case 'c': // c
-      selectRandomMovie(source1)
-      selectRandomMovie(source2)
-      //selectRandomMovie(source3)
+        selectRandomMovie(source1)
+        selectRandomMovie(source2)
+        //selectRandomMovie(source3)
       break;
 
       case 'v':      
-      selectRandomMovie(source2)
-      //selectRandomMovie(source3)
+        selectRandomMovie(source2)
+        //selectRandomMovie(source3)
       break;
 
 
       case 'x':
-      selectRandomMovie(source1)      
-      //selectRandomMovie(source3)
+        selectRandomMovie(source1)      
+        //selectRandomMovie(source3)
       break;
 
       case 'd': 
-      source1.jump()
-      //selectRandomMovie(source3)
+        source1.jump()
+        //selectRandomMovie(source3)
       break;
 
       case 'f': 
-      source2.jump()
-      //selectRandomMovie(source3)
+        source2.jump()
+        //selectRandomMovie(source3)
       break;
 
       case 'b': // b
-      mixer1.blendMode(1)
-      mixer1.blendMode( Math.ceil( Math.random()*18) )
-      //mixer2.blendMode( Math.ceil( Math.random()*18) )
+        mixer1.blendMode(1)
+        mixer1.blendMode( Math.ceil( Math.random()*18) )
+        //mixer2.blendMode( Math.ceil( Math.random()*18) )
       break;  
 
       case 'm': // m
-      mixer1.mixMode( Math.ceil( Math.random()*9) )
-      //mixer2.mixMode( Math.ceil( Math.random()*5) )
+        mixer1.mixMode( Math.ceil( Math.random()*9) )
+        //mixer2.mixMode( Math.ceil( Math.random()*5) )
       break;
 
       case 'r': // r (eset)
-      mixer1.blendMode(1)
-      mixer1.mixMode(1)
-      //mixer2.blendMode(1)
-      //mixer2.mixMode(1)
+        mixer1.blendMode(1)
+        mixer1.mixMode(1)
+        //mixer2.blendMode(1)
+        //mixer2.mixMode(1)
       break;
 
       // program settings 1-9 and 0
