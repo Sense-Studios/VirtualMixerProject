@@ -86,6 +86,12 @@ document.getElementById('file_input').onchange = function(e){
   document.getElementById('upload_button').innerText = filename.split('\\')[filename.split('\\').length-1]  
 }
 
+var program = 0 // default
+document.getElementById('mix_preset_select').onchange = function() { 
+  program = parseInt( this.value );
+  console.log("Program set to: ", program)
+}
+
 var oldbeat = 0
 var useBlendmodes = [ 1, 7, 8, 9, 10, 13, 17, 18 ]
 var useMixmodes = [ 1, 2, 3, 4, 5 ] //  6, 7, 8
@@ -99,37 +105,88 @@ function startBeats( _analysis ) {
     dice = Math.random()
 
     if ( _analysis.beats != oldbeat ) {
-      oldbeat = _analysis.beats
-      var beats = _analysis.beats
-      if ( beats == 2) filemanager.changez()
-      if ( beats == 6) filemanager2.changez()
-      if ( beats%4 == 0) console.log("boem!")
-
       //if (beats%24 == 0 && dice < 0.2 ) source1.jump()
       //if (beats%32 == 0 && dice < 0.2 ) source2.jump()
-      
-      if (beats%16 == 0 && dice < 0.42 ) {
-        console.log("changez 1")
-        filemanager.changez(); 
-        clearTimeout(jump_timeout_1)
-        jump_timeout_1 = setTimeout( function() { source1.jump();  console.log( `${(new Date()).getTime()} JUMP`) }, 1500 )
-      }
-      
-      if (beats%12 == 0 && dice < 0.42 ) {
-        console.log("changez 2")
-        filemanager2.changez(); //
-        clearTimeout(jump_timeout_2)
-        jump_timeout_2 = setTimeout( function() { source2.jump();  console.log( `${(new Date()).getTime()} JUMP`) }, 1500 )
-      }
-
-      if (beats%9 == 0 && dice < 0.8 ) mixer1.blendMode( useBlendmodes[Math.floor( Math.random() * useBlendmodes.length )] );
-      if (beats%18 == 0 && dice < 0.6 ) mixer1.mixMode( useMixmodes[Math.floor( Math.random() * useMixmodes.length )] );
       //if (beats%32 == 0 && dice < 0.1 ) _analysis.mod = 0.5
-      if (beats%32 == 0 && dice > 0.35 ) _analysis.mod = 1
       //if (beats%32 == 0 && dice < 0.1 ) mixer2.pod(0.2)
       //if (beats%32 == 0 && dice > 0.5 ) mixer2.pod(0.4)
       //if (beats%16 == 0 && dice > 0.8  )mixer2.pod(0.8)
-      console.log("did stuff!", beats, dice)
+
+      oldbeat = _analysis.beats
+      var beats = _analysis.beats
+
+      // reset on start
+      if ( beats == 2) filemanager.changez()
+      if ( beats == 6) filemanager2.changez()
+
+      // default
+      if ( program == 0 ) {
+
+        // reset
+        _analysis.mod = 1
+        mixer1.blendMode(0)
+        mixer1.mixMode(0)
+
+        if ( beats%4 == 0) console.log("boem!")        
+        if (beats%16 == 0 && dice < 0.42 ) {          
+          filemanager.changez(); 
+          clearTimeout(jump_timeout_1)
+          jump_timeout_1 = setTimeout( function() { source1.jump();  console.log( `${(new Date()).getTime()} JUMP`) }, 1500 )
+        }
+        
+        if (beats%12 == 0 && dice < 0.42 ) {
+          console.log("changez 2")
+          filemanager2.changez(); //
+          clearTimeout(jump_timeout_2)
+          jump_timeout_2 = setTimeout( function() { source2.jump();  console.log( `${(new Date()).getTime()} JUMP`) }, 1500 )
+        }
+
+        if (beats%9 == 0 && dice < 0.8 ) mixer1.blendMode( useBlendmodes[Math.floor( Math.random() * useBlendmodes.length )] );
+        if (beats%18 == 0 && dice < 0.6 ) mixer1.mixMode( useMixmodes[Math.floor( Math.random() * useMixmodes.length )] );
+        if (beats%32 == 0 && dice > 0.35 ) _analysis.mod = 1
+      }
+
+      // slideshow
+      if ( program == 100 ) { 
+        // reset
+        _analysis.mod = 1
+        mixer1.blendMode(0)
+        mixer1.mixMode(0)
+        
+      }
+
+      // easy going
+      if ( program == 200 ) {
+      }
+
+      // exciting campfire
+      if ( program == 300 ) {
+      }
+
+      // Average mixing
+      if ( program == 400 ) {
+      }
+
+      // Average plus
+      if ( program == 500 ) {        
+      }
+
+      // Eurohouse
+      if ( program == 600 ) {
+      }
+
+      // EDM
+      if ( program == 700 ) {
+      }
+
+      // Hardstyle
+      if ( program == 800 ) {
+      }
+
+      // Breakcore
+      if ( program == 900 ) {
+      }
+      
     }
 
   }, 1 )

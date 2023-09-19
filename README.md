@@ -36,14 +36,24 @@ Write your Webpage:
     <script src="https://virtualmixproject.com/javascripts/build/vendor-min.js"></script>
     <script src="https://virtualmixproject.com/javascripts/build/mixer-min.js"></script>  
   </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden; 
+    }
+  </style>
   <body>
-    <canvas/>
+
+    <!-- the only real html element you need -->
+    <canvas id="glcanvas"></canvas>    
+    
     <script>
 
       // set up renderer and video
       var renderer = new GlRenderer();
-      var testSource1 = new GifSource(   renderer, { src: 'path/to/somefile.gif' } );
-      var testSource2 = new VideoSource( renderer, { src: 'path/to/somefile.mp4' } );
+      var testSource1 = new GifSource(   renderer, { src: 'https://assets.mixkit.co/videos/302/302-720.mp4' } );
+      var testSource2 = new VideoSource( renderer, { src: 'https://assets.mixkit.co/videos/348/348-720.mp4' } );
 
       // this is the actual code for the mixer
       var mixer1 = new Mixer( renderer, { source1: testSource1, source2: testSource2 } );

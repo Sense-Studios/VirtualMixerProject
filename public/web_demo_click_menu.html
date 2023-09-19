@@ -1,0 +1,140 @@
+<html>
+  <head>
+    <script src="https://virtualmixproject.com/javascripts/build/vendor-min.js"></script>
+    <script src="https://virtualmixproject.com/javascripts/build/mixer-min.js"></script>  
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden; 
+      font-family: Verdana, Geneva, Tahoma, sans-serif
+    }
+
+    #glcanvas {
+      position: absolute;
+      z-index: -1;
+    }
+
+    .button_container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-content: center;
+      justify-content: space-evenly;
+      position: relative;
+      left: 2vw;
+      top: 11vh;
+      width: 96vw;
+      height: 78vh;
+      background-color: #66666600; 
+    }
+
+    .video_button {      
+      margin: 2%;
+      min-width: 200px;
+      width: 0;
+      flex-grow: 1;
+      min-height: 300px;
+      background-color: #66666688; 
+      transition-duration: 600ms;
+      cursor: pointer;
+      padding: 12px; 
+      color: #e5e5e5;
+      overflow: hidden;
+      border: solid 6px #a5a5a5aa;
+    }
+
+    .video_button.active {
+      width: 50vw;
+      transition-duration: 600ms;
+      background-color: #a5a5a5bb; 
+    }
+
+    .video_button .hidden_content {
+      transition-duration: 600ms;
+      opacity: 0;
+    }
+
+    .video_button.active .hidden_content {
+      transition-duration: 600ms;
+      opacity: 1.0;
+    } 
+
+  </style>
+  <body>
+    <canvas id="glcanvas"></canvas>    
+
+    <div class="button_container">
+      <div class='video_button' id="button1" data-video-src="/streamable/t0dp56"> 
+        <h1> Hackerman </h1>
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit amet venenatis lacus, in finibus massa. Cras diam ligula, pulvinar eget sem at, malesuada mattis felis. Nulla sed velit vitae libero rhoncus porta ut mattis sapien. Nullam urna nulla, laoreet auctor laoreet eget, gravida vitae metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam vulputate egestas turpis vel congue. Donec euismod mauris eget posuere maximus.</p>
+        <p class="hidden_content"> Cras nec vestibulum augue, quis efficitur magna. Vivamus in enim non sem interdum venenatis non eget ante. Pellentesque placerat, augue in lobortis blandit, odio nunc iaculis nunc, viverra tincidunt justo tortor ut nisi. Phasellus non feugiat ex. Praesent fringilla varius eros et porta. Duis facilisis at neque egestas vestibulum. In hac habitasse platea dictumst. Aenean vel arcu orci. Sed nec risus metus. Pellentesque faucibus, mauris ac tincidunt auctor, neque turpis dapibus sapien, eget euismod turpis ligula condimentum mauris. Vivamus at leo mauris Nunc ullamcorper ante eu arcu egestas porta. Vivamus aliquet at turpis sit amet volutpat. Sed tincidunt nulla eget massa commodo mollis. Fusce tellus orci, tristique eu nulla vitae, auctor posuere nibh. Aliquam fringilla mauris non quam congue, eu cursus massa ornare. Quisque sollicitudin quam nunc, ut pulvinar quam suscipit vel. In non odio eget odio sagittis tincidunt vel a enim. Morbi sed dolor et quam facilisis molestie. Donec quis fringilla velit. Praesent feugiat ornare augue eget convallis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas massa augue, interdum sed rutrum nec, posuere ut justo. Donec porta, ante sit amet varius varius, nulla dolor tempus velit, sit amet feugiat lorem sem ut risus. Proin ligula leo, convallis tincidunt eros ut, lobortis malesuada nibh. Nulla facilisi.</p>        
+      </div>
+      <div class='video_button' id="button2" data-video-src="/streamable/tz79ej"> 
+        <h1> Telescopes </h1>
+        <p>Suspendisse potenti. Proin eget orci in sem laoreet elementum ac vitae felis. Pellentesque non libero vel nulla blandit aliquet a vel sapien. Curabitur in malesuada sem. Proin vitae nulla mi. Ut tincidunt metus consectetur pellentesque faucibus. Ut sit amet leo id mauris maximus vulputate. Donec at lectus tortor. In tempus dapibus tristique. Donec ac neque ante. Integer ullamcorper vulputate pulvinar.</p>
+        <p class="hidden_content">Etiam non urna non ligula consectetur aliquet. Sed pulvinar dolor ut turpis vestibulum, a tincidunt ligula imperdiet. Morbi ac felis molestie, placerat orci quis, tincidunt neque. Praesent consequat sed justo id elementum. Nulla facilisi. Fusce maximus dui et suscipit suscipit. Cras sit amet lorem eu dolor pellentesque tincidunt sed a orci. Nunc ullamcorper ante eu arcu egestas porta. Vivamus aliquet at turpis sit amet volutpat. Sed tincidunt nulla eget massa commodo mollis. Fusce tellus orci, tristique eu nulla vitae, auctor posuere nibh. Aliquam fringilla mauris non quam congue, eu cursus massa ornare. Quisque sollicitudin quam nunc, ut pulvinar quam suscipit vel. In non odio eget odio sagittis tincidunt vel a enim. Morbi sed dolor et quam facilisis molestie. Donec quis fringilla velit. Praesent feugiat ornare augue eget convallis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas massa augue, interdum sed rutrum nec, posuere ut justo. Donec porta, ante sit amet varius varius, nulla dolor tempus velit, sit amet feugiat lorem sem ut risus. Proin ligula leo, convallis tincidunt eros ut, lobortis malesuada nibh. Nulla facilisi.</p>
+      </div>
+      <div class='video_button' id="button3" data-video-src="/streamable/99ki11"> 
+        <h1> Datsun 200ZX </h1>
+        <p>Aenean porttitor semper leo non auctor. Quisque venenatis, tellus a tincidunt fringilla, ante est interdum justo, ut porta diam orci et lorem. Fusce sed urna a urna mollis imperdiet. Phasellus ultricies non leo in convallis. Nulla commodo tortor in dolor dictum, tristique suscipit erat porta. Nullam non risus sapien. Praesent rutrum vestibulum ligula scelerisque imperdiet. Vivamus ultrices arcu eu metus aliquet pharetra. Donec vitae elit at sapien posuere molestie vitae sit amet massa. Aenean tempus mauris urna, fringilla malesuada diam laoreet id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla pellentesque quam nec mauris aliquet condimentum.</p>
+        <p class="hidden_content">Cras nec vestibulum augue, quis efficitur magna. Vivamus in enim non sem interdum venenatis non eget ante. Pellentesque placerat, augue in lobortis blandit, odio nunc iaculis nunc, viverra tincidunt justo tortor ut nisi. Phasellus non feugiat ex. Praesent fringilla varius eros et porta. Duis facilisis at neque egestas vestibulum. In hac habitasse platea dictumst. Aenean vel arcu orci. Sed nec risus metus. Pellentesque faucibus, mauris ac tincidunt auctor, neque turpis dapibus sapien, eget euismod turpis ligula condimentum mauris. Vivamus at leo mauris.</p>
+      </div>
+    </div>
+
+    <script>
+
+      // set up renderer and video
+      var renderer = new GlRenderer();
+      var testSource1 = new VideoSource( renderer, { src: 'https://assets.mixkit.co/videos/302/302-720.mp4' } );
+      var testSource2 = new VideoSource( renderer, { src: 'https://assets.mixkit.co/videos/348/348-720.mp4' } );
+
+      // this is the actual code for the mixer
+      var mixer1 = new Mixer( renderer, { source1: testSource1, source2: testSource2 } );
+      var output = new Output( renderer, mixer1 )
+
+      // start the renderer
+      renderer.init();
+      renderer.render();
+      
+      // add interaction
+      var currentsrc = testSource1 
+      var othersrc = testSource2
+      mixer1.pod(1)
+
+      document.querySelectorAll('.video_button').forEach( function( elm, key ) {
+        elm.onclick = function() { 
+
+          // just deactive when active
+          if ( elm.classList.contains("active")) {
+            elm.classList.remove('active')              
+            return
+          }
+
+          // remove any other active buttons
+          document.querySelectorAll('.video_button').forEach( function( elm2, key ) {
+            elm2.classList.remove('active') 
+          })          
+
+          // set current active and switch the video
+          elm.classList.add('active')
+          
+          // change the source and play
+          othersrc.video.src = this.dataset.videoSrc
+          othersrc.video.play()
+
+          // switch the channels, so the next fade will work too
+          var tempother = othersrc
+          othersrc = currentsrc   
+          currentsrc = tempother
+
+          // fade over to the new video, delay a bit
+          // to prevent 'cuta' (or wait for a state 4 on the video)
+          setTimeout( function() { mixer1.fade(1000) }, 200 );
+        }
+      })
+
+    </script>
+  </body>
+</html>
