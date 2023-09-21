@@ -1,3 +1,15 @@
+@font-face {
+  font-family: mini7_bold;
+  src: url("https://virtualmixproject.com/fonts/MINI 7 Bold.ttf");
+}
+@font-face {
+  font-family: mini7_bold_condensed;
+  src: url("https://virtualmixproject.com/fonts/MINI 7 Condensed Bold.ttf");
+}
+@font-face {
+  font-family: mini7_condensed;
+  src: url("https://virtualmixproject.com/fonts/MINI 7 Condensed.ttf");
+}
 test {
   margin: 0;
   padding: 0;
@@ -25,6 +37,12 @@ body {
 }
 .headline img.smaller {
   height: 42px;
+}
+
+p {
+  text-align: center;
+  font-family: mini7_condensed;
+  margin-bottom: 16px;
 }
 
 .toolbox {

@@ -44,6 +44,7 @@ var selectRandomMovie = function( _source, _filemanager = null, _config = [] ) {
 }
 
 var keyboardoconfig = []
+var program = 0;
 
 function loadKeys() { 
   console.log("key!")
@@ -65,55 +66,97 @@ function loadKeys() {
   })
 
   document.onkeydown = function(e) { 
-    console.log(" >>>> keydown", e)
+    console.log(" >>>> keydown", e.key)
+    
     // poor mans version
     switch (e.key) {
       case 'c': // c
-      selectRandomMovie(source1)
-      selectRandomMovie(source2)
-      //selectRandomMovie(source3)
+        selectRandomMovie(source1)
+        selectRandomMovie(source2)
+        //selectRandomMovie(source3)
       break;
 
       case 'v':      
-      selectRandomMovie(source2)
-      //selectRandomMovie(source3)
+        selectRandomMovie(source2)
+        //selectRandomMovie(source3)
       break;
 
 
       case 'x':
-      selectRandomMovie(source1)      
-      //selectRandomMovie(source3)
+        selectRandomMovie(source1)      
+        //selectRandomMovie(source3)
       break;
 
       case 'd': 
-      source1.jump()
-      //selectRandomMovie(source3)
+        source1.jump()
+        //selectRandomMovie(source3)
       break;
 
       case 'f': 
-      source2.jump()
-      //selectRandomMovie(source3)
+        source2.jump()
+        //selectRandomMovie(source3)
       break;
 
       case 'b': // b
-      mixer1.blendMode(1)
-      mixer1.blendMode( Math.ceil( Math.random()*18) )
-      //mixer2.blendMode( Math.ceil( Math.random()*18) )
+        mixer1.blendMode(1)
+        mixer1.blendMode( Math.ceil( Math.random()*18) )
+        //mixer2.blendMode( Math.ceil( Math.random()*18) )
       break;  
 
       case 'm': // m
-      mixer1.mixMode( Math.ceil( Math.random()*9) )
-      //mixer2.mixMode( Math.ceil( Math.random()*5) )
+        mixer1.mixMode( Math.ceil( Math.random()*9) )
+        //mixer2.mixMode( Math.ceil( Math.random()*5) )
       break;
 
       case 'r': // r (eset)
-      mixer1.blendMode(1)
-      mixer1.mixMode(1)
-      //mixer2.blendMode(1)
-      //mixer2.mixMode(1)
+        mixer1.blendMode(1)
+        mixer1.mixMode(1)
+        //mixer2.blendMode(1)
+        //mixer2.mixMode(1)
       break;
 
-      case '~': // r (eset)
+      // program settings 1-9 and 0
+      case '0':
+        program = 0
+      break;
+
+      case '1':
+        program = 100
+      break;
+
+      case '2':
+        program = 200
+      break;
+    
+      case '3':
+        program = 300
+      break;
+      
+      case '4':
+        program = 400
+      break;
+      
+      case '5':
+        program = 500
+      break;
+      
+      case '6':
+        program = 600
+      break;
+      
+      case '7':
+        program = 700
+      break;
+      
+      case '8':
+        program = 800
+      break;
+
+      case '9':
+        program = 900
+      break;
+
+      case '~': // show logs
         document.getElementById('sysinfo').classList.toggle("hidden")
       break 
 

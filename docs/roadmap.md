@@ -6,8 +6,8 @@
 * Text-source
 * image-source
 * SVG-source
-* Socket source (remote)
-* mixer and controller generator (kind of works)
+* ~~Socket source (remote)~~
+* ~~mixer and controller generator (kind of works)~~
 
 #### MultipleVideoSource
 
@@ -15,7 +15,6 @@ The MultiVideoSource allows for playback of video files in the Mixer project.
 It is very similar to the regular video source, however, it used multiple references to the video file.
 In doing so it allows for very fast jumping through the video even when it is loading from a remote server.
 The main features are random jumping and a cue list, allowing for smart referencing in video files.
-
 
 #### layout and composition abstraction
 

@@ -1,4 +1,5 @@
-VideoSource.prototype = new Source(); // assign prototype to marqer
+// old school way to define a class in javascripts
+VideoSource.prototype = new Source();   // assign prototype to Class
 VideoSource.constructor = VideoSource;  // re-assign constructor
 
 /**
@@ -14,9 +15,20 @@ VideoSource.constructor = VideoSource;  // re-assign constructor
 *
 * @implements Source
 * @constructor Source#VideoSource
-* @example let myVideoSource = new VideoSource( renderer, { src: 'myfile.mp4' } );
+* @example 
+* //create source
+* let myVideoSource = new VideoSource( renderer, { src: 'myfile.mp4' } );
+*
+* // add to mixer
+* someMixer = new Mixer( renderer, { source1: myVideoSource, source2: someOtherSource })
+*
+* // after init:
+* myVideoSource.jump()
+* myVideoSource.video.src = "anotherfile.mp4"
+* myVideoSource.video.playbackRate = 0.4
+*
 * @param {GlRenderer} renderer - GlRenderer object
-* @param {Object} options - JSON Object
+* @param {Object} options - (optional) JSON Object containing the initial src (source) and/or uuid
 */
 
 function VideoSource(renderer, options) {
@@ -41,7 +53,7 @@ function VideoSource(renderer, options) {
   _self.bypass = true;
 
   // create elements (private)
-  var canvasElement, videoElement, canvasElementContext, videoTexture; // wrapperElemen
+  var canvasElement, videoElement, canvasElementContext, videoTexture; // wrapperElement
   var alpha = 1;
 
   // add to renderer
@@ -129,18 +141,22 @@ function VideoSource(renderer, options) {
     // set the uniforms
     renderer.customUniforms[_self.uuid] = { type: "t", value: videoTexture }
     renderer.customUniforms[_self.uuid+'_alpha'] = { type: "f", value: alpha }
-    // renderer.customUniforms[_self.uuid+'_uvmap'] = { type: "v2", value: new THREE.Vector2( 0., 0. ) }
+    renderer.customUniforms[_self.uuid+'_uvmap'] = { type: "v2", value: new THREE.Vector2( 1., 1. ) }
     // renderer.customUniforms[_self.uuid+'_uvmap_mod'] = { type: "v2", value: new THREE.Vector2( 1., 1. ) }
 
     // add uniform
     renderer.fragmentShader = renderer.fragmentShader.replace('/* custom_uniforms */', 'uniform sampler2D '+_self.uuid+';\n/* custom_uniforms */')
     renderer.fragmentShader = renderer.fragmentShader.replace('/* custom_uniforms */', 'uniform float '+_self.uuid+'_alpha;\n/* custom_uniforms */')
-    // renderer.fragmentShader = renderer.fragmentShader.replace('/* custom_uniforms */', 'uniform vec2 '+_self.uuid+'_uvmap;\n/* custom_uniforms */')
+    renderer.fragmentShader = renderer.fragmentShader.replace('/* custom_uniforms */', 'uniform vec2 '+_self.uuid+'_uvmap;\n/* custom_uniforms */')
     // renderer.fragmentShader = renderer.fragmentShader.replace('/* custom_uniforms */', 'uniform vec2 '+_self.uuid+'_uvmap_mod;\n/* custom_uniforms */')
 
     // add main
     // split output in distorted and orig?
-    renderer.fragmentShader = renderer.fragmentShader.replace('/* custom_main */', 'vec4 '+_self.uuid+'_output = ( texture2D( '+_self.uuid+', vUv ).rgba * '+_self.uuid+'_alpha );\n  /* custom_main */')
+    renderer.fragmentShader = renderer.fragmentShader.replace('/* custom_main */', `
+      vec4 ${_self.uuid+'_output'} = ( texture2D( ${_self.uuid}, vUv * ${_self.uuid+'_uvmap'} ).rgba * ${_self.uuid+'_alpha'} );
+      /* custom_main */
+      `
+    )
 
     // expose video and canvas
     /**
@@ -262,15 +278,29 @@ function VideoSource(renderer, options) {
 
   // ===========================================================================
   // For now only here, move to _source?
+  // there should be a way te set up initial source data
   // ===========================================================================
+  /**
+   * @description skip to _time_ (in seconds) or gets `currentTime` in seconds
+   * @function Source#VideoSource#setUVMap
+   * @param {float} u - U (x) horizontal spacing for the texture, 1 is 1 texture, below zero is 'zooming' over 1 is tiling
+   * @param {float} v - V (y) vertical spacing for the texture, 1 is 1 texture, below zero is 'zooming' over 1 is tiling
+   * 
+   */
   _self.setUVMap = function( _x, _y ) {
      renderer.customUniforms[_self.uuid+'_uvmap'].value = new THREE.Vector2( _x, _y )
   }
 
+    /**
+   * @description Not used at this moment
+   * @function Source#VideoSource#setUVMapMod
+   * @param x (u)
+   * @param y (v)
+   */
   _self.setUVMapMod = function( _x, _y ) {
+    console.log(renderer.customUniforms)
     renderer.customUniforms[_self.uuid+'_uvmap_mod'].value = new THREE.Vector2( _x, _y )
   }
-
 
   _self.alpha = function(a) {
     if (a == undefined) {

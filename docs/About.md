@@ -16,8 +16,9 @@ info@sense-studios.com
 * Nabu CDN
 * Giphy
 * Mixkit
+* Streamable
 
-* NSB radio
+* Streamable
 * DeepDanceRadio
 * Subfm
 

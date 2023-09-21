@@ -129,7 +129,7 @@ VideoSource Example on codepen:<br>
 
             
 
-            <td class="description last"><p>JSON Object</p></td>
+            <td class="description last"><p>(optional) JSON Object containing the initial src (source) and/or uuid</p></td>
         </tr>
 
     
@@ -177,7 +177,7 @@ VideoSource Example on codepen:<br>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sources_VideoSource.js.html">sources/VideoSource.js</a>, <a href="sources_VideoSource.js.html#line4">line 4</a>
+        <a href="sources_VideoSource.js.html">sources/VideoSource.js</a>, <a href="sources_VideoSource.js.html#line5">line 5</a>
     </li></ul></dd>
     
 
@@ -208,7 +208,16 @@ VideoSource Example on codepen:<br>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>let myVideoSource = new VideoSource( renderer, { src: 'myfile.mp4' } );</code></pre>
+    <pre class="prettyprint"><code>//create source
+let myVideoSource = new VideoSource( renderer, { src: 'myfile.mp4' } );
+
+// add to mixer
+someMixer = new Mixer( renderer, { source1: myVideoSource, source2: someOtherSource })
+
+// after init:
+myVideoSource.jump()
+myVideoSource.video.src = "anotherfile.mp4"
+myVideoSource.video.playbackRate = 0.4</code></pre>
 
 
 
@@ -276,7 +285,7 @@ VideoSource Example on codepen:<br>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sources_VideoSource.js.html">sources/VideoSource.js</a>, <a href="sources_VideoSource.js.html#line146">line 146</a>
+        <a href="sources_VideoSource.js.html">sources/VideoSource.js</a>, <a href="sources_VideoSource.js.html#line162">line 162</a>
     </li></ul></dd>
     
 
@@ -405,7 +414,7 @@ VideoSource Example on codepen:<br>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sources_VideoSource.js.html">sources/VideoSource.js</a>, <a href="sources_VideoSource.js.html#line241">line 241</a>
+        <a href="sources_VideoSource.js.html">sources/VideoSource.js</a>, <a href="sources_VideoSource.js.html#line257">line 257</a>
     </li></ul></dd>
     
 
@@ -493,7 +502,7 @@ VideoSource Example on codepen:<br>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sources_VideoSource.js.html">sources/VideoSource.js</a>, <a href="sources_VideoSource.js.html#line257">line 257</a>
+        <a href="sources_VideoSource.js.html">sources/VideoSource.js</a>, <a href="sources_VideoSource.js.html#line273">line 273</a>
     </li></ul></dd>
     
 
@@ -581,7 +590,7 @@ VideoSource Example on codepen:<br>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sources_VideoSource.js.html">sources/VideoSource.js</a>, <a href="sources_VideoSource.js.html#line229">line 229</a>
+        <a href="sources_VideoSource.js.html">sources/VideoSource.js</a>, <a href="sources_VideoSource.js.html#line245">line 245</a>
     </li></ul></dd>
     
 
@@ -669,7 +678,7 @@ VideoSource Example on codepen:<br>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sources_VideoSource.js.html">sources/VideoSource.js</a>, <a href="sources_VideoSource.js.html#line235">line 235</a>
+        <a href="sources_VideoSource.js.html">sources/VideoSource.js</a>, <a href="sources_VideoSource.js.html#line251">line 251</a>
     </li></ul></dd>
     
 
@@ -757,7 +766,317 @@ VideoSource Example on codepen:<br>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sources_VideoSource.js.html">sources/VideoSource.js</a>, <a href="sources_VideoSource.js.html#line223">line 223</a>
+        <a href="sources_VideoSource.js.html">sources/VideoSource.js</a>, <a href="sources_VideoSource.js.html#line239">line 239</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setUVMap"><span class="type-signature"></span>setUVMap<span class="signature">(u, v)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>skip to <em>time</em> (in seconds) or gets <code>currentTime</code> in seconds</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>u</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">float</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>U (x) horizontal spacing for the texture, 1 is 1 texture, below zero is 'zooming' over 1 is tiling</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>v</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">float</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>V (y) vertical spacing for the texture, 1 is 1 texture, below zero is 'zooming' over 1 is tiling</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="sources_VideoSource.js.html">sources/VideoSource.js</a>, <a href="sources_VideoSource.js.html#line283">line 283</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setUVMapMod"><span class="type-signature"></span>setUVMapMod<span class="signature">(x, y)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Not used at this moment</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(u)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(v)</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="sources_VideoSource.js.html">sources/VideoSource.js</a>, <a href="sources_VideoSource.js.html#line294">line 294</a>
     </li></ul></dd>
     
 
@@ -896,7 +1215,7 @@ We recommend <strong>mp4</strong></p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sources_VideoSource.js.html">sources/VideoSource.js</a>, <a href="sources_VideoSource.js.html#line184">line 184</a>
+        <a href="sources_VideoSource.js.html">sources/VideoSource.js</a>, <a href="sources_VideoSource.js.html#line200">line 200</a>
     </li></ul></dd>
     
 
@@ -948,7 +1267,7 @@ We recommend <strong>mp4</strong></p>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Sep 13 2023 15:08:09 GMT+0200 (Central European Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Sep 22 2023 01:01:54 GMT+0200 (Central European Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>

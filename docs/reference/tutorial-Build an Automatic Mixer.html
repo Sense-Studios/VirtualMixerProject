@@ -41,8 +41,8 @@ and find the code for that <a href="https://github.com/Sense-Studios/VirtualMixe
 </code></pre>
 <p>create sources</p>
 <pre class="prettyprint source"><code>  // create some video sources, 2 for the mixer and a vhs effect
-  var source1 = new VideoSource(renderer, {} );
-  var source2 = new VideoSource(renderer, {} );
+  var source1 = new VideoSource(renderer, { src: &quot;&quot; } );
+  var source2 = new VideoSource(renderer, { src: &quot;&quot; } );
   var source3 = new VideoSource(renderer, { src: &quot;https://s3-eu-west-1.amazonaws.com/nabu/veejay/clutter/vhs_noise3.mp4&quot; } );
 
 </code></pre>
@@ -59,16 +59,16 @@ and find the code for that <a href="https://github.com/Sense-Studios/VirtualMixe
 <p>Now setup two FileManager for the sources. FileManagers keep track of which video is currently played.<br>
 Assign it a 'set' file, which is a JSON file, with an array in it with urls of videos. Again CORS must be allowed on all files</p>
 <pre class="prettyprint source"><code>  var filemanager = new FileManager( source1 )
-  filemanager.load_set(&quot;https://virtualmixproject.com/sets/programs_awesome.json&quot;)
+  filemanager.load_set(&quot;https://virtualmixproject.com/sets/programs_awesome_streamable.json&quot;)
 
   var filemanager2 = new FileManager( source2 )
-  filemanager2.load_set(&quot;https://virtualmixproject.com/sets/programs_clutter.json&quot;)
+  filemanager2.load_set(&quot;https://virtualmixproject.com/sets/programs_runner_streamable.json&quot;)
 
 </code></pre>
-<p>Now add a second mixer to mix both the first mixer with the VHS noice, that way there can be VHS noise independent<br>
+<p>Now add a second mixer to mix the result of the first mixer with some VHS noice, that way there can be VHS noise independent<br>
 of where the first mixer is set to.<br>
-Connect the second mixer with the vhs noise source and the first mixer.</p>
-<pre class="prettyprint source"><code>  // add noise
+Connect the second mixer with the vhs noise-source and the first mixer.</p>
+<pre class="prettyprint source"><code>  // add vhs noise mixer
   var mixer2 = new Mixer( renderer, { source1: source3, source2: mixer1 });
 
 </code></pre>
@@ -90,13 +90,14 @@ We init the renderer and start the update cycle.</p>
   renderer.render();       // start update & animation
 
   /* ----------------------------------------------------------------------------
-     And we are away
-     ---------------------------------------------------------------------------- */
+  *   And we are away
+  *  ----------------------------------------------------------------------------
+  */
 
 </code></pre>
 <p>Now we can start configuring the mixer, let's et the mixmode on 2 () and the blendmode to 1 (normal)<br>
 The pod is set a little bit to source2 but mostly in the middle</p>
-<pre class="prettyprint source"><code> // set noise
+<pre class="prettyprint source"><code> // make some noise
  mixer2.mixMode(5)
  mixer2.blendMode(1)
  mixer2.pod(0.6)
@@ -107,7 +108,8 @@ The effect library has some 64 effect, contrast is effect 61.<br>
 The 'extra' parameter has en extra setting for each effect, the level of contrast<br>
 in with this particular effect.<br>
 <a href="http://virtualmixproject.com/docs/reference/Effect_ColorEffect.html">Coloreffect docs</a></p>
-<pre class="prettyprint source"><code>  contrast.effect(61)
+<pre class="prettyprint source"><code>  // add effect
+  contrast.effect(61)
   contrast.extra(0.4)
 
 
@@ -116,7 +118,8 @@ in with this particular effect.<br>
 0 and 1 that reflects the position of the mixer. 0 for source left 1 for source right.<br>
 The audioanalysis1 gives a number between 0 and 1 that reflects the current position<br>
 between beats.</p>
-<pre class="prettyprint source"><code>  audioanalysis1.add( mixer1.pod )
+<pre class="prettyprint source"><code>  // add audio
+  audioanalysis1.add( mixer1.pod )
   audioanalysis1.mod = 1
 
 </code></pre>
@@ -145,14 +148,14 @@ etc.</p>
       if (beats == 2) filemanager.changez()
       if (beats == 6) filemanager2.changez()
 
-      if (beats%6 == 0 && dice &lt; 0.2 ) source1.jump()
-      if (beats%4 == 0 && dice &lt; 0.2 ) source2.jump()
-      if (beats%16 == 0 && dice &lt; 0.64 ) filemanager.changez(); //setTimeout(function() { source1.jump() }, 1500 )
-      if (beats%12 == 0 && dice &lt; 0.64 ) filemanager2.changez(); //setTimeout(function() { source1.jump() }, 1500 )
-      if (beats%9 == 0 && dice &lt; 0.7 ) mixer1.blendMode( useBlendmodes[Math.floor( Math.random() * useBlendmodes.length )] );
-      if (beats%18 == 0 && dice &lt; 0.4 ) mixer1.mixMode( useMixmodes[Math.floor( Math.random() * useMixmodes.length )] );
-      if (beats%32 == 0 && dice &lt; 0.1 ) audioanalysis1.mod = 0.5
-      if (beats%32 == 0 && dice > 0.5 ) audioanalysis1.mod = 1
+      if ( beats %  6 == 0 && dice &lt; 0.2  ) source1.jump()
+      if ( beats %  4 == 0 && dice &lt; 0.2  ) source2.jump()
+      if ( beats % 16 == 0 && dice &lt; 0.64 ) filemanager.changez(); //setTimeout(function() { source1.jump() }, 1500 )
+      if ( beats % 12 == 0 && dice &lt; 0.64 ) filemanager2.changez(); //setTimeout(function() { source1.jump() }, 1500 )
+      if ( beats %  9 == 0 && dice &lt; 0.7  ) mixer1.blendMode( useBlendmodes[Math.floor( Math.random() * useBlendmodes.length )] );
+      if ( beats % 18 == 0 && dice &lt; 0.4  ) mixer1.mixMode( useMixmodes[Math.floor( Math.random() * useMixmodes.length )] );
+      if ( beats % 32 == 0 && dice &lt; 0.1  ) audioanalysis1.mod = 0.5
+      if ( beats % 32 == 0 && dice > 0.5  ) audioanalysis1.mod = 1
     }
 
     if ( audioanalysis1.render() &lt; 0.01 ) {
@@ -198,6 +201,7 @@ var beats = 0
 var useBlendmodes = [ 1, 7, 8, 9, 10, 13, 17, 18 ]
 var useMixmodes = [ 1, 2, 3, 4, 5, 6, 9 ] //  6, 7, 8
 var dice = 0
+
 setInterval(function() {
   if ( audioanalysis1.render() > 0.99 && !wasSet ) {
     wasSet = true
@@ -205,22 +209,20 @@ setInterval(function() {
     dice = Math.random()
     console.log(&quot;beat!&quot;, beats, dice)
 
-    if (beats == 2) filemanager.changez()
-    if (beats == 6) filemanager2.changez()
+    if ( beats == 2 ) filemanager.changez()
+    if ( beats == 6 ) filemanager2.changez()
 
-    if (beats%6 == 0 && dice &lt; 0.2 ) source1.jump()
-    if (beats%4 == 0 && dice &lt; 0.2 ) source2.jump()
-    if (beats%16 == 0 && dice &lt; 0.64 ) filemanager.changez();
-    if (beats%12 == 0 && dice &lt; 0.64 ) filemanager2.changez();
-    if (beats%9 == 0 && dice &lt; 0.7 ) mixer1.blendMode( useBlendmodes[ Math.floor( Math.random() * useBlendmodes.length ) ] );
-    if (beats%18 == 0 && dice &lt; 0.4 ) mixer1.mixMode( useMixmodes[ Math.floor( Math.random() * useMixmodes.length ) ] );
-    if (beats%32 == 0 && dice &lt; 0.1 ) audioanalysis1.mod = 0.5
-    if (beats%32 == 0 && dice > 0.5 ) audioanalysis1.mod = 1
+    if ( beats %  6 == 0 && dice &lt; 0.2  ) source1.jump()
+    if ( beats %  4 == 0 && dice &lt; 0.2  ) source2.jump()
+    if ( beats % 16 == 0 && dice &lt; 0.64 ) filemanager.changez(); //setTimeout(function() { source1.jump() }, 1500 )
+    if ( beats % 12 == 0 && dice &lt; 0.64 ) filemanager2.changez(); //setTimeout(function() { source1.jump() }, 1500 )
+    if ( beats %  9 == 0 && dice &lt; 0.7  ) mixer1.blendMode( useBlendmodes[Math.floor( Math.random() * useBlendmodes.length )] );
+    if ( beats % 18 == 0 && dice &lt; 0.4  ) mixer1.mixMode( useMixmodes[Math.floor( Math.random() * useMixmodes.length )] );
+    if ( beats % 32 == 0 && dice &lt; 0.1  ) audioanalysis1.mod = 0.5
+    if ( beats % 32 == 0 && dice > 0.5  ) audioanalysis1.mod = 1
   }
 
-  if ( audioanalysis1.render() &lt; 0.01 ) {
-    wasSet = false
-  }
+  if ( audioanalysis1.render() &lt; 0.01 ) wasSet = false  
 
 }, 1 )
 </code></pre>
@@ -237,7 +239,7 @@ setInterval(function() {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Sep 13 2023 15:08:09 GMT+0200 (Central European Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Sep 22 2023 01:01:54 GMT+0200 (Central European Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>

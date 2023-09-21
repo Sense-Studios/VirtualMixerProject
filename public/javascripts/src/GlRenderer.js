@@ -57,7 +57,7 @@ var GlRenderer = function( _options ) {
   // container for all elements that inherit init() and update()
   _self.nodes = [] // sources modules and effects
 
-  // containers for custom uniforms and cosutomDefines
+  // containers for custom customUniforms and customDefines
   _self.customUniforms = {}
   _self.customDefines = {}
 

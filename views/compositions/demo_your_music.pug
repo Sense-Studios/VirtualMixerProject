@@ -21,12 +21,12 @@ html
 			.item#item1
 				center 
 					h2 1
-				p First, select an mp3 from your computer
-				input.hidden(type="file", id="file_input")
+				p First, select an mp3 from your computer, <strong>OR...</strong> 
+				input.hidden(type="file", id="file_input" accept=".mp3,audio/*")
 				
 				button#upload_button Upload
 				p 
-					| <strong>OR</strong> If you have no mp3 files available, 
+					| ... If you have no mp3 files available, because you're no Boomer 
 					| you can also select from these fine songs below:
 				
 				select#select_song
@@ -77,16 +77,16 @@ html
 					h2 3
 				p Optionally, select a "mix preset", for automatic mixing (still under development)
 				select#mix_preset_select
-					option(value="") I'll mix myself, thank you				
-					option(value="500") Slideshow
-					option(value="100") Program easy going
-					option(value="200") exciting campfire
-					option(value="300") Average mxing
-					option(value="400") Average plus
-					option(value="500") Eurohouse
-					option(value="600") EDM
-					option(value="800") hardstyle
-
+					option(value="0") I'll mix myself, thank you				
+					option(value="100") Slideshow
+					option(value="200") Easy going
+					option(value="300") Mellow Space
+					option(value="400") Clubbing
+					option(value="500") Pink Floyd
+					option(value="600") Eurohouse
+					option(value="700") EDM
+					option(value="800") Hardstyle
+					option(value="900") Breakcore
 				
 				br
 				br
