@@ -1,9 +1,1 @@
-{
-	"version": 3,
-	"file": "vjacademy.css",
-	"sources": [
-		"vjacademy.sass"
-	],
-	"names": [],
-	"mappings": "AAAA,AAAA,OAAO,CAAC;EACN,MAAM,EAAE,IAAI;EACZ,IAAI,EAAE,IAAI;EACV,QAAQ,EAAE,QAAQ;EAClB,KAAK,EAAE,KAAK;EACZ,WAAW,EAAE,iBAAiB,GAIP;EATzB,AAOE,OAPK,CAOL,CAAC,CAAC;IACA,KAAK,EAAE,KAAK;IACZ,WAAW,EAAE,GAAG,GAAG"
-}
+{"version":3,"sourceRoot":"","sources":["vjacademy.sass"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA","file":"vjacademy.css"}

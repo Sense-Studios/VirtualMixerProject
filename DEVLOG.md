@@ -10,7 +10,7 @@ Everything should be sync again now.
 **TODO**: Still on the list
 - ~~fix the repository!!~~
 - ~~add 180BPM metronome ?~~
-- Check demos and namely the tracker
+- ~~Check demos and namely the tracker~~
 - build a boilerplate template like the sense-studios site
 - build a boilerplate template for a video left-right slide show site
 - add a video tutorial for the cdn and npm options
@@ -28,7 +28,7 @@ Everything should be sync again now.
 - ~~remove vja from "your own way"~~
 - add 180BPM ?
 - ~~Check Analytics for div. pages~~
-- Check demos and namely the tracker
+- ~~Check demos and namely the tracker~~
 - ~~update site~~ and git setup
 - build a boilerplate template like the sense-studios site
 - build a boilerplate template for a video left-right slide show site
