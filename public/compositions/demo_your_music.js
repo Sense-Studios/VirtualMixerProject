@@ -135,8 +135,8 @@ function startBeats( _analysis ) {
       }
 
       // reset moveis on start
-      if ( beats == 2) filemanager.changez()
-      if ( beats == 6) filemanager2.changez()
+      if ( ( beats) == 2) filemanager.changez()
+      if ( ( beats) == 6) filemanager2.changez()
 
       // --------------------------------------------------------------------------------
       // and now for the actual programs
@@ -152,115 +152,263 @@ function startBeats( _analysis ) {
           mixer1.mixMode(1)
           useBlendmodes = [ 1, 7, 8, 9, 10, 13, 17, 18 ]
           useMixmodes = [ 1, 2, 3, 4, 5 ] //  6, 7, 8
+          source1.video.playbackRate = 1
+          source2.video.playbackRate = 1
         }
 
-        if ( beats%4 == 0) console.log("boem! program 0")  // for testing
-        if ( beats%16 == 0 && dice < 0.42 ) {          
+        if ( ( beats  )%4 == 0) console.log("boem! program 0")  // for testing
+        if ( ( beats  )%16 == 0 && dice < 0.42 ) {          
           filemanager.changez(); 
           clearTimeout(jump_timeout_1)
           jump_timeout_1 = setTimeout( function() { source1.jump();  console.log( `${(new Date()).getTime()} JUMP`) }, 1500 )
         }
         
-        if ( beats%12 == 0 && dice < 0.42 ) {
+        if ( ( beats  )%12 == 0 && dice < 0.42 ) {
           console.log("changez 2")
-          filemanager2.changez(); //
           clearTimeout(jump_timeout_2)
           jump_timeout_2 = setTimeout( function() { source2.jump();  console.log( `${(new Date()).getTime()} JUMP`) }, 1500 )
         }
-
-        if ( beats%9 == 0 && dice < 0.8 ) mixer1.blendMode( useBlendmodes[Math.floor( Math.random() * useBlendmodes.length )] );
-        if ( beats%18 == 0 && dice < 0.6 ) mixer1.mixMode( useMixmodes[Math.floor( Math.random() * useMixmodes.length )] );
-        if ( beats%32 == 0 && dice > 0.35 ) _analysis.mod = 1
+      
+        if ( ( beats      )%  9 == 0 && dice < 0.8  ) mixer1.blendMode( useBlendmodes[Math.floor( Math.random() * useBlendmodes.length )] );
+        if ( ( beats      )% 18 == 0 && dice < 0.6  ) mixer1.mixMode( useMixmodes[Math.floor( Math.random() * useMixmodes.length )] );
+        if ( ( beats      )% 32 == 0 && dice > 0.35 ) _analysis.mod = 1
       }
 
-      // slideshow
-      if ( program == 100 ) {
+      // ----------------------------------------------------------------------------
+      // Slideshow
+      if ( program == 100 ) {        
+
+        // INIT PROGRAM
         if (newProgram) {
+          document.querySelector('#sysinfo h2').innerHTML = "MIXER INFO:<small><br><br>Slideshow</small>"
           _analysis.mod = 0.125
+          useBlendmodes = [ 1, 7, 8, 9, 10, 13, 17, 18 ]
+          useMixmodes = [ 1, 2, 3, 4, 5 ] //  6, 7, 8
           mixer1.blendMode(1)
           mixer1.mixMode(1)
+          source1.video.playbackRate = 0.42
+          source2.video.playbackRate = 0.42
         }
-        if ( beats%4 == 0) console.log("boem! program 100")  // for testing
+
+        // THE RULES
+        if ( ( beats      )%  2 == 0 && dice < 0.8  ) mixer1.blendMode( useBlendmodes[Math.floor( Math.random() * useBlendmodes.length )] );
+        if ( ( beats      )%  4 == 0 && dice < 0.6  ) mixer1.mixMode( useMixmodes[Math.floor( Math.random() * useMixmodes.length )] );
+        if ( ( beats - 4  )%  8 == 0 && dice < 0.71 ) filemanager.changez()
+        if ( ( beats      )%  8 == 0 && dice < 0.71 ) filemanager2.changez()
+
+        // TESTING
+        if ( ( beats)%4 == 0) console.log("boem! program 100")  // for testing
+        console.log("chk")  // for testing
       }
 
-      // easy going
+      // ----------------------------------------------------------------------------
+      // Very Easy Going
       if ( program == 200 ) {
         if (newProgram) {
-          _analysis.mod = 0.125
+          document.querySelector('#sysinfo h2').innerHTML = "MIXER INFO:<small><br><br>Easy Going</small>"
+          _analysis.mod = 0.25
           mixer1.blendMode(1)
           mixer1.mixMode(1)
+          source1.video.playbackRate = 0.6
+          source2.video.playbackRate = 0.6
         }
-        if ( beats%4 == 0) console.log("boem! program 200")  // for testing
+
+        // THE RULES
+        if ( ( beats      )%2 == 0 && dice < 0.8  ) mixer1.blendMode( useBlendmodes[Math.floor( Math.random() * useBlendmodes.length )] );
+        if ( ( beats      )%4 == 0 && dice < 0.6  ) mixer1.mixMode( useMixmodes[Math.floor( Math.random() * useMixmodes.length )] );
+        if ( ( beats - 4  )%8 == 0 && dice < 0.71 ) filemanager.changez()
+        if ( ( beats      )%8 == 0 && dice < 0.71 ) filemanager2.changez()
+
+        // TESTING
+        if ( ( beats      )%4 == 0 ) console.log("boem! program 200")  // for testing
       }
 
-      // exciting campfire
+      // ----------------------------------------------------------------------------
+      // Mellow Space
       if ( program == 300 ) {
         if (newProgram) {
+          document.querySelector('#sysinfo h2').innerHTML = "MIXER INFO:<small><br><br>Mellow Space</small>"
           _analysis.mod = 0.5
+          useBlendmodes = [ 1, 3, 4, 5, 6, 9, 10, 11, 13, 14, 16, 17 ]
+          useMixmodes = [ 3, 4, 5 ] //  6, 7, 8
           mixer1.blendMode(1)
-          mixer1.mixMode(1)
+          mixer1.mixMode(3)
+          source1.video.playbackRate = 0.9
+          source2.video.playbackRate = 0.9
+          filemanager.changez()
+          filemanager2.changez()
         }
-        if ( beats%4 == 0) console.log("boem! program 300")  // for testing
+
+        // THE RULES
+        if ( ( beats     )% 8  == 0 && dice < 0.8  ) mixer1.blendMode( useBlendmodes[Math.floor( Math.random() * useBlendmodes.length )] );
+        if ( ( beats - 8 )% 16 == 0 && dice < 0.6  ) mixer1.mixMode( useMixmodes[Math.floor( Math.random() * useMixmodes.length )] );
+        if ( ( beats - 16)% 32 == 0 && dice < 0.71 ) filemanager.changez()
+        if ( ( beats     )% 32 == 0 && dice < 0.71 ) filemanager2.changez()
+
+        // TESTING
+        if ( ( beats)%4 == 0) console.log("boem! program 300")  // for testing
       }
 
-      // Average mixing
+      // ----------------------------------------------------------------------------
+      // Clubbing
       if ( program == 400 ) {
+        document.querySelector('#sysinfo h2').innerHTML = "MIXER INFO:<small><br><br>Clubbing</small>"
         if (newProgram) {
           _analysis.mod = 1
           mixer1.blendMode(1)
           mixer1.mixMode(1)
+          source1.video.playbackRate = 1
+          source2.video.playbackRate = 1
         }
-        if ( beats%4 == 0) console.log("boem! program 400")  // for testing
+
+        // THE RULES
+        // video
+        if ( ( beats -  8)%32 == 0 && dice < 0.8  ) filemanager.changez(); 
+        if ( ( beats - 20)%32 == 0 && dice < 0.8  ) filemanager2.changez();
+        if ( ( beats -  0)%32 == 0 && dice < 0.21 ) source1.jump();
+        if ( ( beats - 16)%32 == 0 && dice < 0.21 ) source2.jump();
+
+        // mixer 1
+        if ( ( beats -  8)% 16 == 0 && dice < 0.72 ) mixer1.blendMode( useBlendmodes[Math.floor( Math.random() * useBlendmodes.length )] );
+        if ( ( beats     )% 16 == 0 && dice < 0.5  ) mixer1.mixMode( useMixmodes[Math.floor( Math.random() * useMixmodes.length )] );
+
+        if ( ( beats)%4 == 0) console.log("boem! program 400")  // for testing
       }
 
-      // Average plus
-      if ( program == 500 ) {   
+      // ----------------------------------------------------------------------------
+      // Pink Floyd
+      if ( program == 500 ) {
+        document.querySelector('#sysinfo h2').innerHTML = "MIXER INFO:<small><br><br>Pink Floyd</small>"
         if (newProgram) {
+          useBlendmodes = [ 1, 3, 4, 5, 6, 9, 10, 11, 13, 14, 16, 17 ]
+          useMixmodes = [ 3, 4, 5 ] //  6, 7, 8
           _analysis.mod = 1
           mixer1.blendMode(1)
-          mixer1.mixMode(1)
+          mixer1.mixMode(3)
+          source1.video.playbackRate = 1
+          source2.video.playbackRate = 1
         }
-        if ( beats%4 == 0) console.log("boem! program 500")  // for testing     
+
+        // THE RULES
+        if ( ( beats      )%8  == 0 && dice < 0.8  ) mixer1.blendMode( useBlendmodes[Math.floor( Math.random() * useBlendmodes.length )] );
+        if ( ( beats - 8  )%16 == 0 && dice < 0.6  ) mixer1.mixMode( useMixmodes[Math.floor( Math.random() * useMixmodes.length )] );
+        if ( ( beats - 16 )%32 == 0 && dice < 0.71 ) filemanager.changez()
+        if ( ( beats      )%32 == 0 && dice < 0.71 ) filemanager2.changez()
+
+        // TESTING
+        if ( ( beats)%4 == 0) console.log("boem! program 500")  // for testing     
       }
 
+      // ----------------------------------------------------------------------------
       // Eurohouse
       if ( program == 600 ) {
+        document.querySelector('#sysinfo h2').innerHTML = "MIXER INFO:<small><br><br>Eurohouse</small>"
         if (newProgram) {
           _analysis.mod = 1
+          useBlendmodes = [ 1, 7, 8, 9, 10, 11 ]
+          useMixmodes = [ 1, 2, 3, 4, 5, 6, 7 ] //  6, 7, 8
           mixer1.blendMode(1)
           mixer1.mixMode(1)
+          source1.video.playbackRate = 1
+          source2.video.playbackRate = 1
         }
-        if ( beats%4 == 0) console.log("boem! program 600")  // for testing
+
+        // THE RULES
+        // video
+        if ( ( beats -  0)%16 == 0 && dice < 0.8  ) filemanager.changez(); 
+        if ( ( beats - 12)%16 == 0 && dice < 0.8  ) filemanager2.changez();
+        if ( ( beats -  0)%32 == 0 && dice < 0.21 ) source1.jump();
+        if ( ( beats - 16)%32 == 0 && dice < 0.21 ) source2.jump();
+
+        // mixer 1
+        if ( ( beats -  4)% 8 == 0 && dice < 0.72 ) mixer1.blendMode( useBlendmodes[Math.floor( Math.random() * useBlendmodes.length )] );
+        if ( ( beats     )% 8 == 0 && dice < 0.5  ) mixer1.mixMode( useMixmodes[Math.floor( Math.random() * useMixmodes.length )] );
+
+        // TESTING
+        if ( ( beats     )% 4 == 0 ) console.log("boem! program 600")  // for testing
+        if ( ( beats     )% 1 == 0 ) console.log("chk 600")  // for testing        
       }
+
 
       // EDM
       if ( program == 700 ) {
+        
+        // INIT PROGRAM
         if (newProgram) {
-          _analysis.mod = 1.5
+          document.querySelector('#sysinfo h2').innerHTML = "MIXER INFO:<small><br><br>EDM</small>"
+          _analysis.mod = 1
+          useBlendmodes = [ 1, 7, 8, 9, 10, 13, 17, 18 ]
+          useMixmodes = [ 1, 2, 3, 4, 5 ] //  6, 7, 8
           mixer1.blendMode(1)
           mixer1.mixMode(1)
         }
-        if ( beats%4 == 0) console.log("boem! program 700")  // for testing
+
+        // THE RULES
+        // video
+        if ( ( beats -  0)%16 == 0 && dice < 0.8  ) filemanager.changez(); 
+        if ( ( beats - 12)%16 == 0 && dice < 0.8  ) filemanager2.changez();
+        if ( ( beats -  8)%32 == 0 && dice < 0.62 ) source1.jump();
+        if ( ( beats - 16)%32 == 0 && dice < 0.42 ) source2.jump();
+
+        // mixer 1
+        if ( ( beats -  4)% 8 == 0 && dice < 0.8 ) mixer1.blendMode( useBlendmodes[Math.floor( Math.random() * useBlendmodes.length )] );
+        if ( ( beats     )% 8 == 0 && dice < 0.6 ) mixer1.mixMode( useMixmodes[Math.floor( Math.random() * useMixmodes.length )] );
+
+        // TESTING
+        if ( ( beats     )% 4 == 0 ) console.log("boem! program 700: EDM")  // for testing
+        if ( ( beats     )% 1 == 0 ) console.log("tsk 700", beats, ( (beats -  0)%16 == 0 ),  ( dice < 0.8 ) )  // for testing
       }
 
       // Hardstyle
       if ( program == 800 ) {
+        document.querySelector('#sysinfo h2').innerHTML = "MIXER INFO:<small><br><br>Hardstyle</small>"
         if (newProgram) {
-          _analysis.mod = 2
+          _analysis.mod = 1.25
+          useBlendmodes = [ 1, 7, 8, 9, 10, 13, 17, 18 ]
+          useMixmodes = [ 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 4, 5 ] //  6, 7, 8
           mixer1.blendMode(1)
           mixer1.mixMode(1)
         }
-        if ( beats%4 == 0) console.log("boem! program 800")  // for testing
+
+        // THE RULES
+        // video
+        if ( ( beats -  0)%16 == 0 && dice < 0.8  ) filemanager.changez(); 
+        if ( ( beats - 12)%16 == 0 && dice < 0.8  ) filemanager2.changez();
+        if ( ( beats -  4)%16 == 0 && dice < 0.42 ) source1.jump();
+        if ( ( beats -  8)%16 == 0 && dice < 0.32 ) source2.jump();
+
+        // mixer 1
+        if ( ( beats -  4 )% 8 == 0 && dice < 0.8 ) mixer1.blendMode( useBlendmodes[Math.floor( Math.random() * useBlendmodes.length )] );
+        if ( ( beats      )% 8 == 0 && dice < 0.6 ) mixer1.mixMode( useMixmodes[Math.floor( Math.random() * useMixmodes.length )] );
+
+        // TESTING
+        if ( ( beats      )%4 == 0) console.log("boem! program 800")  // for testing
       }
 
       // Breakcore
       if ( program == 900 ) {
+        document.querySelector('#sysinfo h2').innerHTML = "MIXER INFO:<small><br><br>Breakcore</small>"
         if (newProgram) {
           _analysis.mod = 2
+          useBlendmodes = [ 1, 7, 8, 9, 10, 13, 17, 18 ]
+          useMixmodes = [ 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 4, 5 ] //  6, 7, 8
           mixer1.blendMode(1)
           mixer1.mixMode(1)
         }
-        if ( beats%4 == 0) console.log("boem! program 900")  // for testing
+
+       // THE RULES
+        // video
+        if ( ( beats -  0) %16 == 0 && dice < 0.8  ) filemanager.changez(); 
+        if ( ( beats - 12) %16 == 0 && dice < 0.8  ) filemanager2.changez();
+        if ( ( beats -  4) %16 == 0 && dice < 0.42 ) source1.jump();
+        if ( ( beats -  8) %16 == 0 && dice < 0.32 ) source2.jump();
+
+        // mixer 1
+        if ( ( beats -  4) % 8 == 0 && dice < 0.8 ) mixer1.blendMode( useBlendmodes[Math.floor( Math.random() * useBlendmodes.length )] );
+        if ( ( beats     ) % 8 == 0 && dice < 0.6 ) mixer1.mixMode( useMixmodes[Math.floor( Math.random() * useMixmodes.length )] );
+
+        // TESTING
+        if ( ( beats)%4 == 0) console.log("boem! program 900")  // for testing
       }
     }
 
